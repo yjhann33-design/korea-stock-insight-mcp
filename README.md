@@ -84,13 +84,6 @@ Claude will chain `get_corp_code("Samsung Electronics")` → `get_disclosure_lis
 - **v0.3** — Multi-company batch queries, sector aggregations
 - **Future** — Optional hosted tier with English-summarized disclosures and webhook push (no ETA; track progress in [GitHub Issues](https://github.com/yjhann33-design/korea-stock-insight-mcp/issues))
 
-## See also
-
-The Korean stock MCP ecosystem is small — these are the other servers worth knowing about:
-
-- [`@jjlabsio/korea-stock-mcp`](https://github.com/jjlabsio/korea-stock-mcp) — TypeScript implementation, Korean-language tool descriptions
-- [`dartpoint.ai`](https://dartpoint.ai) — commercial SaaS with hosted dashboard
-
 ## License
 
 MIT. See [LICENSE](./LICENSE).
