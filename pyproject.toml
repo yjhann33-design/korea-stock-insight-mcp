@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "korea-stock-insight-mcp"
-version = "0.1.1"
+version = "0.1.2"
 description = "MCP server for Korean stock market analysis (DART disclosures + KRX prices). English-first, drop-in for Claude Desktop / Cursor."
 readme = "README.md"
 requires-python = ">=3.10"
