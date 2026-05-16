@@ -1,0 +1,31 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.yjhann33-design/korea-stock-insight-mcp",
+  "description": "Korean stock market MCP server (DART disclosures + KRX prices). English-first tool descriptions for global LLM analysts. Hybrid: free stdio tier + optional paid SSE tier with English summaries.",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/yjhann33-design/korea-stock-insight-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registry_type": "pypi",
+      "registry_base_url": "https://pypi.org",
+      "identifier": "korea-stock-insight-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": [
+        {
+          "name": "DART_API_KEY",
+          "description": "Free API key from opendart.fss.or.kr (sign up, get instantly). Required for all DART disclosure tools.",
+          "is_required": true,
+          "format": "string",
+          "is_secret": true
+        }
+      ]
+    }
+  ]
+}
