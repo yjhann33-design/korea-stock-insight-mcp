@@ -27,3 +27,6 @@ Thumbs.db
 
 # Runtime cache (corp_code zip etc.)
 .cache/
+
+# daily_stats.py state (yesterday's metrics for delta calc)
+scripts/.daily_stats_state.json

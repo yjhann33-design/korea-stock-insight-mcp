@@ -84,6 +84,18 @@ Claude will chain `get_corp_code("Samsung Electronics")` → `get_disclosure_lis
 - **v0.3** — Multi-company batch queries, sector aggregations
 - **Future** — Optional hosted tier with English-summarized disclosures and webhook push (no ETA; track progress in [GitHub Issues](https://github.com/yjhann33-design/korea-stock-insight-mcp/issues))
 
+## Feedback & contributions
+
+This is solo-maintained, and stdio mode means I can't see who's using it. The only signals I get are PyPI downloads, GitHub stars, and what you tell me.
+
+**If this helps you, please let me know:**
+
+- 🐛 [Open an issue](https://github.com/yjhann33-design/korea-stock-insight-mcp/issues) — bugs, missing tools, broken queries
+- 💬 [Discussions](https://github.com/yjhann33-design/korea-stock-insight-mcp/discussions) — "anyone analyzed [ticker]?", "is this the right tool for X?", general questions
+- ⭐ Star the repo — easiest way to signal demand and shape the roadmap
+
+If you actually analyze Korean stocks with Claude/Cursor, I'd genuinely love to hear what queries you run and what's missing.
+
 ## License
 
 MIT. See [LICENSE](./LICENSE).
