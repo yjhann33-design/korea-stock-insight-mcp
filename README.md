@@ -1,5 +1,7 @@
 # Korea Stock Insight MCP
 
+mcp-name: io.github.yjhann33-design/korea-stock-insight-mcp
+
 [![PyPI](https://img.shields.io/pypi/v/korea-stock-insight-mcp)](https://pypi.org/project/korea-stock-insight-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
