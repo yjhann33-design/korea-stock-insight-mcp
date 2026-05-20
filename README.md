@@ -5,7 +5,9 @@ mcp-name: io.github.yjhann33-design/korea-stock-insight-mcp
 [![PyPI](https://img.shields.io/pypi/v/korea-stock-insight-mcp)](https://pypi.org/project/korea-stock-insight-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**MCP server for Korean stock market analysis.** Drop-in for Claude Desktop, Cursor, Cline, and any [MCP-compatible client](https://modelcontextprotocol.io/clients). English-first tool descriptions for global LLM analysts researching Korean equities.
+> **English-first MCP — built for global LLM analysts, not Korean fluency speakers.**
+
+Drop-in for Claude Desktop, Cursor, Cline, and any [MCP-compatible client](https://modelcontextprotocol.io/clients). Ask in English, get Korean filings, financials, and KOSPI/KOSDAQ prices in one tool call chain — DART corp_code lookup, disclosures, XBRL statements, daily OHLCV.
 
 ## What you get
 
@@ -20,12 +22,16 @@ mcp-name: io.github.yjhann33-design/korea-stock-insight-mcp
 
 DART (전자공시시스템) is South Korea's electronic disclosure system — the SEC EDGAR equivalent, operated by the Financial Supervisory Service (FSS).
 
-## Why this server?
+## Why English-first matters
 
-- **English-first tool descriptions** — built for global LLM analysts, no Korean fluency required
-- **DART + KRX in one place** — disclosures, financials, and prices through a single MCP
-- **No vendor lock-in** — runs locally via stdio with your own free DART API key
-- **MIT licensed, no telemetry, no account required**
+Korean public filings are written in Korean, ticker codes are 6-digit numerics with no global mnemonic, and the disclosure system (DART) has no English equivalent of EDGAR's full-text search. For a non-Korean analyst, that's three friction layers before any actual research.
+
+This server collapses them. Tool descriptions, parameter names, and examples are all written for an LLM that *doesn't read Korean* — company resolution accepts English names ("Samsung Electronics", "Naver"), responses include English context where useful, and the workflow is one Claude/Cursor turn instead of three browser tabs.
+
+- **English-first tool descriptions** — names, params, examples all in English
+- **DART + KRX in one place** — disclosures, financials, daily prices through a single MCP
+- **One-line install, no account** — `uvx korea-stock-insight-mcp` and you're done (only a free DART key needed)
+- **Local stdio, MIT, no telemetry** — your queries don't leave your machine
 
 ## Quick start (Claude Desktop)
 
@@ -71,12 +77,30 @@ If you don't have `uvx`, install [uv](https://docs.astral.sh/uv/) first (one-lin
 
 Claude will chain `get_corp_code("Samsung Electronics")` → `get_disclosure_list("005930")` → `get_financial_statement(corp_code, 2025, "FY")` automatically.
 
-## Sample queries
+## Sample queries (30 seconds, copy-paste into Claude)
 
-- *"Compare the Q1 2025 operating margins of Samsung Electronics, SK Hynix, and LG Energy Solution."*
-- *"Show me all M&A-related disclosures for Naver in the last 60 days."*
-- *"What's KODEX 200's price trend over the past 3 months?"*
-- *"Pull Kakao's most recent annual report."*
+Three workflows global analysts actually run on Korean equities. Each one chains 2–4 tool calls automatically.
+
+### 1. Memory-cycle peer comparison
+> *"Compare Samsung Electronics and SK Hynix on revenue, operating margin, and capex for the most recent annual filing. Highlight where they diverge."*
+
+Resolves both names to corp_codes → pulls latest XBRL → returns a side-by-side. Useful for tracking the HBM/DRAM cycle.
+
+### 2. Disclosure radar before a catalyst
+> *"Show me Naver's last 30 days of DART filings. Flag anything about earnings, M&A, share buybacks, or executive changes."*
+
+`get_disclosure_list` with date range, then Claude triages titles. No Korean reading required — the tool description tells Claude what filing types to look for.
+
+### 3. Price + filing context in one turn
+> *"What did Kakao file most recently, and how has the stock moved on KOSPI over the past 90 days?"*
+
+Combines `get_disclosure_list` + `get_stock_quote` so you get the news and the price reaction in the same answer.
+
+### Other examples
+
+- *"Pull LG Energy Solution's last annual report and summarize the management discussion."*
+- *"What's the KODEX 200 ETF's 6-month trend?"* (works with ETFs too)
+- *"For Hyundai Motor, list every disclosure tagged as a major decision (주요사항보고서) in 2025."*
 
 ## Roadmap
 
